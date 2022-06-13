@@ -2,7 +2,9 @@ package com.gitlab.rmarzec.task;
 
 import com.gitlab.rmarzec.framework.utils.controller.YTController;
 import com.gitlab.rmarzec.model.YTTile;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
