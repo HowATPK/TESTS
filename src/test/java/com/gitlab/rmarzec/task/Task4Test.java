@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-
 public class Task4Test extends TestBase{
 
     private static final String PAGE_URL = "https://www.youtube.com/";
