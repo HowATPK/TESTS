@@ -1,7 +1,6 @@
 package com.gitlab.rmarzec.framework.utils.controller;
 
 import com.gitlab.rmarzec.framework.utils.pageobject.WikipediaPageObjects;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,12 +12,10 @@ public class WikipediaController {
 
     private static final long DEFAULT_S_TIMEOUT = 10;
 
-    private final WebDriver driver;
-    private WikipediaPageObjects wikipediaPageObjects;
-    private WebDriverWait wait;
+    private final WikipediaPageObjects wikipediaPageObjects;
+    private final WebDriverWait wait;
 
     public WikipediaController(final WebDriver driver) {
-        this.driver = driver;
         this.wikipediaPageObjects = new WikipediaPageObjects(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_S_TIMEOUT));
     }
@@ -34,8 +31,11 @@ public class WikipediaController {
     }
 
     /**
-     * @param expectedLanguage
-     * @return
+     * Method prints name of all accessible languages form wikipedia page. If name of language equals provided String argument, method will print href related
+     * of language's child object.
+     *
+     * @param expectedLanguage - the name of the language for which we want to get the URL.
+     * @return String with URL related to language with name indicated in method argument.
      */
     public String printAllLanguagesAndFindURLOfChosenLanguage(final String expectedLanguage) {
         String url = "";

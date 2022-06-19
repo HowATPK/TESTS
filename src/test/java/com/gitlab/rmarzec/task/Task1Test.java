@@ -1,10 +1,10 @@
 package com.gitlab.rmarzec.task;
 
 import com.gitlab.rmarzec.framework.utils.controller.WikipediaController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
 
 public class Task1Test extends TestBase {
 
@@ -23,7 +23,7 @@ public class Task1Test extends TestBase {
     public void openWikipediaPageTest() {
         mainUtilitiesController.goToURLMethod(PAGE_URL);
         String testMessage = "Wikipedia page does not open";
-        assertTrue(testMessage, wikipediaController.isWikipediaPageVisible());
+        Assertions.assertTrue(wikipediaController.isWikipediaPageVisible(), testMessage);
     }
 
     @Test
@@ -31,6 +31,6 @@ public class Task1Test extends TestBase {
     public void openWikipediaPageTest2() {
 
         String testMessage = String.format("Cannot find URL of %s language", EXPECTED_LANGUAGE);
-        assertNotEquals(testMessage, "", wikipediaController.printAllLanguagesAndFindURLOfChosenLanguage(EXPECTED_LANGUAGE));
+        Assertions.assertNotEquals(testMessage, "", wikipediaController.printAllLanguagesAndFindURLOfChosenLanguage(EXPECTED_LANGUAGE));
     }
 }

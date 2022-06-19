@@ -1,16 +1,16 @@
 package com.gitlab.rmarzec.task;
 
 import com.gitlab.rmarzec.framework.utils.controller.YTController;
-import com.gitlab.rmarzec.model.YTTile;
-import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
 
 public class Task4Test extends TestBase{
 
-    private YTController ytController;
+    private static final String PAGE_URL = "https://www.youtube.com/";
+
+    private final YTController ytController;
 
     public Task4Test() {
         super();
@@ -18,9 +18,22 @@ public class Task4Test extends TestBase{
     }
 
     @Test
-    public void Task4Test(){
-        //Lista kafelkow
-        List<YTTile> ytTileList = new ArrayList<YTTile>();
-        
+    @Order(1)
+    public void openYTPageAndAcceptCookies(){
+        mainUtilitiesController.goToURLMethod(PAGE_URL);
+        ytController.acceptCookiesMethod();
+        String logoTestMessage = "YT page does not open properly - does not see logo";
+        String moviesTestMessage = "YT page does not open properly - does not see movies container";
+        Assertions.assertAll(
+                ()->Assertions.assertTrue(ytController.isYTPageVisible(), logoTestMessage),
+                ()->Assertions.assertTrue(ytController.isYTFilmContainerVisible(), moviesTestMessage)
+        );
+
+    }
+
+    @Test
+    @Order(2)
+    public void getInfoFromFirst12Movies(){
+        ytController.getInformationFromMovies();
     }
 }
